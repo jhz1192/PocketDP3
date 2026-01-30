@@ -1,5 +1,5 @@
-<h1 style="text-align:center; margin:0;">
-  <img src="assets/pokeman.png" width="60" style="vertical-align: middle; margin-right: 8px;" alt=""/>
+<h1 align="center">
+  <img src="assets/pokeman.png" width="60" align="middle" alt="" />
   PocketDP3: Efficient Pocket-Scale 3D Visuomotor Policy
 </h1>
 
