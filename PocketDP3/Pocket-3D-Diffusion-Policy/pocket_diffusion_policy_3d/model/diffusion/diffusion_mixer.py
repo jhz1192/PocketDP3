@@ -44,7 +44,6 @@ class DiMBlock(nn.Module):
             nn.Linear(mlp_dim, hidden_dim),
         )
         
-        # AdaLN
         self.t_modulator = nn.Sequential(
             nn.Linear(hidden_dim, mlp_dim),
             nn.SiLU(),
