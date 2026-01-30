@@ -30,12 +30,12 @@ Our PocketDP3 adopts the efficient point-cloud encoder from DP3 and stacks $K$ D
 
 Our code is intended to be evaluated with the third-party benchmark [RoboTwin2.0](https://github.com/RoboTwin-Platform/RoboTwin). To reproduce results, you need to **copy** our policy folder into the RoboTwin repository and run RoboTwin’s training and evaluation scripts.
 
-Clone our repository by:
+Clone our repository along with [RoboTwin](https://github.com/RoboTwin-Platform/RoboTwin):
 ```
 git clone --recurse-submodules https://github.com/jhz1192/PocketDP3.git
 ```
 
-Set up the runtime environment using the official RoboTwin scripts:
+Set up the runtime environment using the scripts provided by RoboTwin  official doc:
 
 ```
 conda create -n PocketDP3 python=3.10 -y
@@ -44,7 +44,7 @@ cd RoboTwin
 bash script/_install.sh
 pip install zarr==2.12.0 wandb ipdb gpustat dm_control omegaconf hydra-core==1.2.0 dill==0.3.5.1 einops==0.4.1 diffusers==0.11.1 numba==0.56.4 moviepy imageio av matplotlib termcolor
 ```
-Note that PyTorch3D must be installed successfull. For more detailed installation instructions, please refer to the official [usage](https://robotwin-platform.github.io/doc/usage/robotwin-install.html).
+Note that PyTorch3D must be installed successfull. For more detailed installation instructions, please refer to the official [doc](https://robotwin-platform.github.io/doc/usage/robotwin-install.html).
 
 Download assets:
 ```
