@@ -144,14 +144,11 @@ Evaluation on the **RoboTwin 2.0** benchmark.
 If you find PocketDP3 useful for your research, please kindly cite our paper:
 
 ```bibtex
-@misc{zhang2026pocketdp3efficientpocketscale3d,
-      title={PocketDP3: Efficient Pocket-Scale 3D Visuomotor Policy}, 
-      author={Jinhao Zhang and Zhexuan Zhou and Huizhe Li and Yichen Lai and Wenlong Xia and Haoming Song and Youmin Gong and Jie Me},
-      year={2026},
-      eprint={2601.22018},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2601.22018}, 
+@article{zhang2026pocketdp3,
+  title={PocketDP3: Efficient Pocket-Scale 3D Visuomotor Policy},
+  author={Zhang, Jinhao and Zhou, Zhexuan and Li, Huizhe and Lai, Yichen and Xia, Wenlong and Song, Haoming and Gong, Youmin and Me, Jie},
+  journal={arXiv preprint arXiv:2601.22018},
+  year={2026}
 }
 ```
 
