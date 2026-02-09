@@ -139,6 +139,11 @@ Evaluation on the **RoboTwin 2.0** benchmark.
 | Turn Switch | 46.0% | **59.0%** | +13.0% | 56.0% | +10.0% |
 | **Average** | 50.8% | **66.0%** | +15.2% | **71.6%** | +20.8% |
 
+### 📊 Detailed Model Size Benchmarks
+For a comprehensive breakdown of success rates across all tasks and different model sizes, please refer to our results page:
+
+[**📂 View Detailed Performance Report**](assets/algorithm_results.html)
+
 ## 🎓 Citation
 
 If you find PocketDP3 useful for your research, please kindly cite our paper:

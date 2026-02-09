@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average success rate across varied parameter scales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; background-color: #f8f9fa; }
+        .table-container { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .high-score { color: green !important; font-weight: bold; }
+        .low-score { color: #dc3545 !important; }
+        .best-in-row { text-decoration: underline; font-weight: bold; }
+        .exceed-10 { color: #006400 !important; font-weight: bold; }  /* 深绿色 0-10% */
+        .exceed-20 { color: #0066cc !important; font-weight: bold; }  /* 蓝色 10-20% */
+        .exceed-30 { color: #dc3545 !important; font-weight: bold; }  /* 红色 20-30% */
+        .exceed-gold { color: #FFD700 !important; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); }  /* 金色 30%+ */
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        table {
+            white-space: nowrap;
+        }
+        td, th {
+            text-align: center;
+            vertical-align: middle;
+        }
+        /* Task Name 列在表格主体中左对齐，但在表头中居中 */
+        tbody td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="table-container">
+        <h2 class="text-center mb-4">Average success rate across varied parameter scales</h2>
+        
+        <div class="mb-3 text-center">
+            <div class="mb-1">
+                <span class="me-3"><span class="best-in-row">Underline</span>: Best in Row</span>
+                <span class="me-3"><span class="exceed-10">Dark Green</span>: >DP3 0-10%</span>
+                <span class="me-3"><span class="exceed-20">Blue</span>: >DP3 10-20%</span>
+                <span class="me-3"><span class="exceed-30">Red</span>: >DP3 20-30%</span>
+                <span><span class="exceed-gold">Gold</span>: >DP3 30%+</span>
+            </div>
+            <div class="text-secondary small">The second header row displays the <strong>Parameters</strong> for each method.</div>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th rowspan="2" style="vertical-align: middle;">ID</th>
+                    <th style="vertical-align: middle;">Task Name</th>
+                    <th scope="col">PocketDP3</th>
+                    <th scope="col">PocketDP3 (Tiny)</th>
+                    <th scope="col">PocketDP3 (Large)</th>
+                    <th scope="col">PocketDP3 (XLarge)</th>
+                    <th scope="col">PocketDP3 (XXLarge)</th>
+                    <th scope="col">DP3</th>
+                </tr>
+                <tr style="font-size: 0.85em; font-weight: normal; opacity: 0.9;">
+                    <th>Parameters</th>
+                    <th>1.7255M</th>
+                    <th>0.5139M</th>
+                    <th>2.5171M</th>
+                    <th>9.6522M</th>
+                    <th>38.0782M</th>
+                    <th>262.4325M</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Adjust Bottle</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">95.0%</td>
+                    <td class="">92.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">99.0%</td>
+                    <td class="">99.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>2</td>
+                    <td>Beat Block Hammer</td>
+                    <td class="exceed-30">92.0%</td>
+                    <td class="best-in-row exceed-30">94.0%</td>
+                    <td class="exceed-20">88.0%</td>
+                    <td class="exceed-20">87.0%</td>
+                    <td class="exceed-20">90.0%</td>
+                    <td class="">72.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>3</td>
+                    <td>Blocks Ranking RGB</td>
+                    <td class="">3.0%</td>
+                    <td class="">1.0%</td>
+                    <td class="">3.0%</td>
+                    <td class="">2.0%</td>
+                    <td class="best-in-row exceed-10">6.0%</td>
+                    <td class="">3.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>4</td>
+                    <td>Blocks Ranking Size</td>
+                    <td class="exceed-10">6.0%</td>
+                    <td class="exceed-10">4.0%</td>
+                    <td class="best-in-row exceed-10">8.0%</td>
+                    <td class="exceed-10">7.0%</td>
+                    <td class="exceed-10">5.0%</td>
+                    <td class="">2.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>5</td>
+                    <td>Click Alarmclock</td>
+                    <td class="best-in-row exceed-30">98.0%</td>
+                    <td class="exceed-20">94.0%</td>
+                    <td class="exceed-20">96.0%</td>
+                    <td class="exceed-20">96.0%</td>
+                    <td class="exceed-20">93.0%</td>
+                    <td class="">77.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>6</td>
+                    <td>Click Bell</td>
+                    <td class="best-in-row exceed-20">100.0%</td>
+                    <td class="best-in-row exceed-20">100.0%</td>
+                    <td class="best-in-row exceed-20">100.0%</td>
+                    <td class="best-in-row exceed-20">100.0%</td>
+                    <td class="best-in-row exceed-20">100.0%</td>
+                    <td class="">90.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>7</td>
+                    <td>Dump Bin Bigbin</td>
+                    <td class="best-in-row exceed-10">89.0%</td>
+                    <td class="">75.0%</td>
+                    <td class="">84.0%</td>
+                    <td class="exceed-10">87.0%</td>
+                    <td class="exceed-10">86.0%</td>
+                    <td class="">85.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>8</td>
+                    <td>Grab Roller</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">93.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">98.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>9</td>
+                    <td>Handover Block</td>
+                    <td class="">48.0%</td>
+                    <td class="">52.0%</td>
+                    <td class="">70.0%</td>
+                    <td class="exceed-20">80.0%</td>
+                    <td class="best-in-row exceed-20">86.0%</td>
+                    <td class="">70.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>10</td>
+                    <td>Handover Mic</td>
+                    <td class="">95.0%</td>
+                    <td class="">98.0%</td>
+                    <td class="best-in-row">100.0%</td>
+                    <td class="">97.0%</td>
+                    <td class="">99.0%</td>
+                    <td class="best-in-row">100.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>11</td>
+                    <td>Hanging Mug</td>
+                    <td class="best-in-row exceed-30">39.0%</td>
+                    <td class="exceed-20">29.0%</td>
+                    <td class="exceed-20">35.0%</td>
+                    <td class="exceed-20">29.0%</td>
+                    <td class="exceed-20">36.0%</td>
+                    <td class="">17.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>12</td>
+                    <td>Lift Pot</td>
+                    <td class="best-in-row exceed-10">98.0%</td>
+                    <td class="best-in-row exceed-10">98.0%</td>
+                    <td class="">95.0%</td>
+                    <td class="best-in-row exceed-10">98.0%</td>
+                    <td class="">95.0%</td>
+                    <td class="">97.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>13</td>
+                    <td>Move Can Pot</td>
+                    <td class="best-in-row exceed-30">97.0%</td>
+                    <td class="exceed-20">81.0%</td>
+                    <td class="exceed-30">95.0%</td>
+                    <td class="exceed-30">96.0%</td>
+                    <td class="exceed-30">96.0%</td>
+                    <td class="">70.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>14</td>
+                    <td>Move Pillbottle Pad</td>
+                    <td class="exceed-20">53.0%</td>
+                    <td class="exceed-10">45.0%</td>
+                    <td class="best-in-row exceed-20">56.0%</td>
+                    <td class="exceed-10">45.0%</td>
+                    <td class="exceed-10">45.0%</td>
+                    <td class="">41.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>15</td>
+                    <td>Move Playingcard Away</td>
+                    <td class="best-in-row exceed-10">75.0%</td>
+                    <td class="">67.0%</td>
+                    <td class="exceed-10">73.0%</td>
+                    <td class="exceed-10">73.0%</td>
+                    <td class="exceed-10">73.0%</td>
+                    <td class="">68.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>16</td>
+                    <td>Move Stapler Pad</td>
+                    <td class="">5.0%</td>
+                    <td class="">2.0%</td>
+                    <td class="">10.0%</td>
+                    <td class="">10.0%</td>
+                    <td class="">10.0%</td>
+                    <td class="best-in-row">12.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>17</td>
+                    <td>Open Laptop</td>
+                    <td class="best-in-row exceed-10">87.0%</td>
+                    <td class="">82.0%</td>
+                    <td class="exceed-10">85.0%</td>
+                    <td class="">79.0%</td>
+                    <td class="best-in-row exceed-10">87.0%</td>
+                    <td class="">82.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>18</td>
+                    <td>Open Microwave</td>
+                    <td class="exceed-20">77.0%</td>
+                    <td class="exceed-30">83.0%</td>
+                    <td class="exceed-gold">92.0%</td>
+                    <td class="best-in-row exceed-gold">96.0%</td>
+                    <td class="best-in-row exceed-gold">96.0%</td>
+                    <td class="">61.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>19</td>
+                    <td>Pick Diverse Bottles</td>
+                    <td class="exceed-30">74.0%</td>
+                    <td class="best-in-row exceed-30">77.0%</td>
+                    <td class="exceed-20">71.0%</td>
+                    <td class="exceed-20">63.0%</td>
+                    <td class="exceed-10">58.0%</td>
+                    <td class="">52.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>20</td>
+                    <td>Pick Dual Bottles</td>
+                    <td class="best-in-row exceed-gold">93.0%</td>
+                    <td class="exceed-30">83.0%</td>
+                    <td class="exceed-gold">90.0%</td>
+                    <td class="exceed-30">87.0%</td>
+                    <td class="exceed-20">78.0%</td>
+                    <td class="">60.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>21</td>
+                    <td>Place A2B Left</td>
+                    <td class="">45.0%</td>
+                    <td class="">42.0%</td>
+                    <td class="best-in-row exceed-10">50.0%</td>
+                    <td class="">45.0%</td>
+                    <td class="best-in-row exceed-10">50.0%</td>
+                    <td class="">46.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>22</td>
+                    <td>Place A2B Right</td>
+                    <td class="">31.0%</td>
+                    <td class="">22.0%</td>
+                    <td class="">27.0%</td>
+                    <td class="">37.0%</td>
+                    <td class="">43.0%</td>
+                    <td class="best-in-row">49.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>23</td>
+                    <td>Place Bread Basket</td>
+                    <td class="exceed-20">41.0%</td>
+                    <td class="best-in-row exceed-30">48.0%</td>
+                    <td class="exceed-20">39.0%</td>
+                    <td class="exceed-10">34.0%</td>
+                    <td class="exceed-10">33.0%</td>
+                    <td class="">26.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>24</td>
+                    <td>Place Bread Skillet</td>
+                    <td class="best-in-row exceed-gold">52.0%</td>
+                    <td class="exceed-20">38.0%</td>
+                    <td class="exceed-30">40.0%</td>
+                    <td class="exceed-30">43.0%</td>
+                    <td class="exceed-30">41.0%</td>
+                    <td class="">19.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>25</td>
+                    <td>Place Burger Fries</td>
+                    <td class="exceed-20">86.0%</td>
+                    <td class="exceed-10">74.0%</td>
+                    <td class="best-in-row exceed-20">90.0%</td>
+                    <td class="exceed-20">84.0%</td>
+                    <td class="">71.0%</td>
+                    <td class="">72.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>26</td>
+                    <td>Place Can Basket</td>
+                    <td class="exceed-10">74.0%</td>
+                    <td class="">51.0%</td>
+                    <td class="exceed-20">78.0%</td>
+                    <td class="">63.0%</td>
+                    <td class="best-in-row exceed-20">82.0%</td>
+                    <td class="">67.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>27</td>
+                    <td>Place Cans Plasticbox</td>
+                    <td class="exceed-gold">95.0%</td>
+                    <td class="best-in-row exceed-gold">98.0%</td>
+                    <td class="exceed-gold">96.0%</td>
+                    <td class="exceed-gold">88.0%</td>
+                    <td class="exceed-gold">84.0%</td>
+                    <td class="">48.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>28</td>
+                    <td>Place Container Plate</td>
+                    <td class="best-in-row exceed-10">91.0%</td>
+                    <td class="exceed-10">90.0%</td>
+                    <td class="exceed-10">87.0%</td>
+                    <td class="">83.0%</td>
+                    <td class="best-in-row exceed-10">91.0%</td>
+                    <td class="">86.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>29</td>
+                    <td>Place Dual Shoes</td>
+                    <td class="">5.0%</td>
+                    <td class="">7.0%</td>
+                    <td class="">8.0%</td>
+                    <td class="">7.0%</td>
+                    <td class="best-in-row exceed-10">20.0%</td>
+                    <td class="">13.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>30</td>
+                    <td>Place Empty Cup</td>
+                    <td class="best-in-row exceed-30">94.0%</td>
+                    <td class="exceed-30">90.0%</td>
+                    <td class="exceed-30">89.0%</td>
+                    <td class="exceed-30">90.0%</td>
+                    <td class="exceed-20">79.0%</td>
+                    <td class="">65.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>31</td>
+                    <td>Place Fan</td>
+                    <td class="best-in-row exceed-10">41.0%</td>
+                    <td class="">24.0%</td>
+                    <td class="exceed-10">39.0%</td>
+                    <td class="exceed-10">40.0%</td>
+                    <td class="best-in-row exceed-10">41.0%</td>
+                    <td class="">36.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>32</td>
+                    <td>Place Mouse Pad</td>
+                    <td class="">3.0%</td>
+                    <td class="">4.0%</td>
+                    <td class="exceed-10">7.0%</td>
+                    <td class="best-in-row exceed-10">8.0%</td>
+                    <td class="exceed-10">7.0%</td>
+                    <td class="">4.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>33</td>
+                    <td>Place Object Basket</td>
+                    <td class="">55.0%</td>
+                    <td class="">59.0%</td>
+                    <td class="best-in-row">65.0%</td>
+                    <td class="">62.0%</td>
+                    <td class="">51.0%</td>
+                    <td class="best-in-row">65.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>34</td>
+                    <td>Place Object Scale</td>
+                    <td class="">7.0%</td>
+                    <td class="">7.0%</td>
+                    <td class="">9.0%</td>
+                    <td class="">11.0%</td>
+                    <td class="">12.0%</td>
+                    <td class="best-in-row">15.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>35</td>
+                    <td>Place Object Stand</td>
+                    <td class="best-in-row exceed-20">72.0%</td>
+                    <td class="exceed-10">63.0%</td>
+                    <td class="exceed-10">65.0%</td>
+                    <td class="exceed-20">71.0%</td>
+                    <td class="exceed-10">67.0%</td>
+                    <td class="">60.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>36</td>
+                    <td>Place Phone Stand</td>
+                    <td class="exceed-20">63.0%</td>
+                    <td class="exceed-20">55.0%</td>
+                    <td class="best-in-row exceed-30">65.0%</td>
+                    <td class="best-in-row exceed-30">65.0%</td>
+                    <td class="exceed-10">53.0%</td>
+                    <td class="">44.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>37</td>
+                    <td>Place Shoe</td>
+                    <td class="">53.0%</td>
+                    <td class="">41.0%</td>
+                    <td class="">57.0%</td>
+                    <td class="">55.0%</td>
+                    <td class="">55.0%</td>
+                    <td class="best-in-row">58.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>38</td>
+                    <td>Press Stapler</td>
+                    <td class="best-in-row exceed-10">76.0%</td>
+                    <td class="">62.0%</td>
+                    <td class="exceed-10">73.0%</td>
+                    <td class="exceed-10">75.0%</td>
+                    <td class="exceed-10">74.0%</td>
+                    <td class="">69.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>39</td>
+                    <td>Put Bottles Dustbin</td>
+                    <td class="exceed-10">68.0%</td>
+                    <td class="">45.0%</td>
+                    <td class="exceed-10">64.0%</td>
+                    <td class="best-in-row exceed-20">71.0%</td>
+                    <td class="exceed-10">65.0%</td>
+                    <td class="">60.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>40</td>
+                    <td>Put Object Cabinet</td>
+                    <td class="">43.0%</td>
+                    <td class="">48.0%</td>
+                    <td class="">63.0%</td>
+                    <td class="">63.0%</td>
+                    <td class="">47.0%</td>
+                    <td class="best-in-row">72.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>41</td>
+                    <td>Rotate QRCode</td>
+                    <td class="">51.0%</td>
+                    <td class="">38.0%</td>
+                    <td class="">55.0%</td>
+                    <td class="">58.0%</td>
+                    <td class="">62.0%</td>
+                    <td class="best-in-row">74.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>42</td>
+                    <td>Scan Object</td>
+                    <td class="exceed-20">43.0%</td>
+                    <td class="">31.0%</td>
+                    <td class="best-in-row exceed-20">45.0%</td>
+                    <td class="exceed-10">39.0%</td>
+                    <td class="best-in-row exceed-20">45.0%</td>
+                    <td class="">31.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>43</td>
+                    <td>Shake Bottle</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">98.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="exceed-10">99.0%</td>
+                    <td class="best-in-row exceed-10">100.0%</td>
+                    <td class="">98.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>44</td>
+                    <td>Shake Bottle Horizontally</td>
+                    <td class="best-in-row">100.0%</td>
+                    <td class="best-in-row">100.0%</td>
+                    <td class="best-in-row">100.0%</td>
+                    <td class="">99.0%</td>
+                    <td class="">99.0%</td>
+                    <td class="best-in-row">100.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>45</td>
+                    <td>Stack Blocks Three</td>
+                    <td class="">0.0%</td>
+                    <td class="">1.0%</td>
+                    <td class="exceed-10">2.0%</td>
+                    <td class="">1.0%</td>
+                    <td class="best-in-row exceed-10">3.0%</td>
+                    <td class="">1.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>46</td>
+                    <td>Stack Blocks Two</td>
+                    <td class="exceed-10">28.0%</td>
+                    <td class="exceed-20">37.0%</td>
+                    <td class="best-in-row exceed-20">41.0%</td>
+                    <td class="exceed-10">31.0%</td>
+                    <td class="exceed-10">33.0%</td>
+                    <td class="">24.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>47</td>
+                    <td>Stack Bowls Three</td>
+                    <td class="exceed-20">72.0%</td>
+                    <td class="exceed-10">63.0%</td>
+                    <td class="exceed-20">74.0%</td>
+                    <td class="best-in-row exceed-30">77.0%</td>
+                    <td class="exceed-10">66.0%</td>
+                    <td class="">57.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>48</td>
+                    <td>Stack Bowls Two</td>
+                    <td class="exceed-10">90.0%</td>
+                    <td class="exceed-10">89.0%</td>
+                    <td class="exceed-10">89.0%</td>
+                    <td class="best-in-row exceed-20">93.0%</td>
+                    <td class="exceed-10">91.0%</td>
+                    <td class="">83.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>49</td>
+                    <td>Stamp Seal</td>
+                    <td class="exceed-30">41.0%</td>
+                    <td class="exceed-20">34.0%</td>
+                    <td class="best-in-row exceed-30">43.0%</td>
+                    <td class="exceed-30">42.0%</td>
+                    <td class="exceed-20">31.0%</td>
+                    <td class="">18.0%</td>
+                </tr>
+    
+                <tr>
+                    <td>50</td>
+                    <td>Turn Switch</td>
+                    <td class="exceed-20">56.0%</td>
+                    <td class="best-in-row exceed-20">59.0%</td>
+                    <td class="exceed-10">55.0%</td>
+                    <td class="exceed-20">58.0%</td>
+                    <td class="exceed-10">54.0%</td>
+                    <td class="">46.0%</td>
+                </tr>
+    
+                <tr class="fw-bold table-secondary">
+                    <td></td>
+                    <td>Average</td>
+                    <td>62.10%</td>
+                    <td>57.42%</td>
+                    <td>63.16%</td>
+                    <td>62.48%</td>
+                    <td>61.76%</td>
+                    <td>55.24%</td>
+                </tr>
+                <tr class="fw-bold table-info">
+                    <td></td>
+                    <td>Best Count</td>
+                    <td>19</td>
+                    <td>8</td>
+                    <td>14</td>
+                    <td>10</td>
+                    <td>14</td>
+                    <td>9</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="text-center mt-3 text-muted">
+            <small>Total Tasks: 50</small>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
