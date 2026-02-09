@@ -142,7 +142,7 @@ Evaluation on the **RoboTwin2.0** benchmark.
 ### 📊 Detailed Results on RoboTwin2.0
 For a comprehensive breakdown of success rates across all tasks and different model sizes, please refer to our results page:
 
-[**📂 View Detailed Performance Report**](assets/algorithm_results.html)
+[**📂 View Detailed Performance Report (HTML)**](https://htmlpreview.github.io/?https://github.com/jhz1192/PocketDP3/blob/main/assets/algorithm_results.html)
 
 ## 🎓 Citation
 
